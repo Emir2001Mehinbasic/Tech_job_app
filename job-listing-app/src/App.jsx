@@ -1,31 +1,35 @@
 import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Homecard from './components/Homecard'
-import Joblisting from './components/Joblistings'
-import ViewAllJobs from './components/ViewAllJobs'
+import {Route, createBrowserRouter, createRoutesFromElements,
+  RouterProvider
+} from 'react-router-dom'
+import Mainlayout from './layouts/Mainlayout';
+import Homepage from './pages/Homepage'
+import Jobspage from './pages/Jobspage'
+import NotFoundPage from './pages/NotFoundPage';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Mainlayout />}>
+    <Route
+      index
+      element={<Homepage />}
+      errorElement={<h1>Greška - stranica nije pronađena</h1>}
+    />
+    <Route
+      path='/jobs'
+      element={<Jobspage />}
+      errorElement={<h1>Greška - stranica nije pronađena</h1>}
+    />
+    <Route
+      path='*'
+      element={<NotFoundPage />}
+    />
+    </Route>
+  )
+);
 
 const App = () => {
-  return (
-    <>
-    <Navbar />
-    <Hero title="Test Title" subtitle="This is subtitle"/>
-    <Homecard />
-    <Joblisting />
-    <ViewAllJobs />
-
-  
-    
-
-   
-   
-
-
-    
-
- 
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
