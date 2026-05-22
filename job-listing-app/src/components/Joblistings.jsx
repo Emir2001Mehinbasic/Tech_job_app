@@ -1,26 +1,27 @@
-import React from 'react'
-import { useEffect,useState } from 'react';
-import Joblisting from './Joblisting'
+import React from "react";
+import { useEffect, useState } from "react";
+import Joblisting from "./Joblisting";
+import Spinner from "./Spinner";
 
-const Joblistings = ({isHome = false}) => {
-  const [jobs,setJobs] = useState ([]);
-  const [loading, setLoading] = useState (true);
+const Joblistings = ({ isHome = false }) => {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchJobs = async () =>{
-      try{
-       const res = await fetch ('http://localhost:8000/jobs');
-      const data = await res.json();
-      setJobs (data);
-      setLoading (false);
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/jobs");
+        const data = await res.json();
+        setJobs(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+        setLoading(false);
       }
-      catch (error){
-        console.error ('Error fetching jobs:', error);
-        setLoading (false);
-      }};
-      
-      fetchJobs();
-    }, []);
+    };
+
+    fetchJobs();
+  }, []);
 
   return (
     <section className="bg-blue-50 px-4 py-10">
@@ -30,7 +31,7 @@ const Joblistings = ({isHome = false}) => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {loading ? (
-            <h2>Loading...</h2>
+            <Spinner loading={loading} />
           ) : (
             <>
               {jobs.map((job) => (
@@ -42,6 +43,6 @@ const Joblistings = ({isHome = false}) => {
       </div>
     </section>
   );
-}
+};
 
-export default Joblistings
+export default Joblistings;
