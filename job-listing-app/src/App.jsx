@@ -6,6 +6,7 @@ import Mainlayout from './layouts/Mainlayout';
 import Homepage from './pages/Homepage'
 import Jobspage from './pages/Jobspage'
 import NotFoundPage from './pages/NotFoundPage';
+import JobPage from './pages/JobPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,13 @@ const router = createBrowserRouter(
       path='/jobs'
       element={<Jobspage />}
       errorElement={<h1>Greška - stranica nije pronađena</h1>}
+      
+    />
+    <Route
+      path='/jobs/:id'
+      element={<JobPage />}
+      errorElement={<h1>Greška - stranica nije pronađena</h1>}
+      
     />
     <Route
       path='*'
