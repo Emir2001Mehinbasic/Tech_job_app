@@ -7,6 +7,7 @@ import Homepage from './pages/Homepage'
 import Jobspage from './pages/Jobspage'
 import NotFoundPage from './pages/NotFoundPage';
 import JobPage ,{jobLoader} from './pages/JobPage';
+import AddJobPage from './pages/AddJobPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,12 @@ const router = createBrowserRouter(
       path='/jobs/:id'
       element={<JobPage />}
       loader={jobLoader}
+      errorElement={<h1>Greška - stranica nije pronađena</h1>}
+      
+    />
+    <Route
+      path='/add-job'
+      element={<AddJobPage />}
       errorElement={<h1>Greška - stranica nije pronađena</h1>}
       
     />
