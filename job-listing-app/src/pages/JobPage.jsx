@@ -54,8 +54,8 @@ const JobPage = () => {
 
       <section className="bg-indigo-50">
         <div className="container m-auto py-10 px-6">
-          <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
-            <main>
+          <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-6">
+            <main className="lg:col-span-2 space-y-6">
               <div className="bg-white p-6 rounded-lg shadow-md text-center md:text-left">
                 <div className="text-gray-500 mb-4">{job.type}</div>
                 <h1 className="text-3xl font-bold mb-4">{job.title}</h1>
@@ -65,7 +65,7 @@ const JobPage = () => {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+              <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-indigo-800 text-lg font-bold mb-6">
                   Job Description
                 </h3>
@@ -80,7 +80,7 @@ const JobPage = () => {
               </div>
             </main>
 
-            <aside>
+            <aside className="space-y-6">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-bold mb-6">Company Info</h3>
 
@@ -103,10 +103,10 @@ const JobPage = () => {
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+              <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-bold mb-6">Manage Job</h3>
                 <Link
-                  to="/add-job"
+                  to={`/jobs/edit/${job.id}`}
                   className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >
                   Edit Job
