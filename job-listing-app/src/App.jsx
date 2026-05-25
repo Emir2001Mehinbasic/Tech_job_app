@@ -13,6 +13,8 @@ import JobPage, { jobLoader } from "./pages/JobPage";
 import AddJobPage from "./pages/AddJobPage";
 
 const App = () => {
+
+  // Add job function that will be passed to AddJobPage component as a prop. This function will make a POST request to the backend to add a new job.
   const addJob = async (newJob) => {
     const res = await fetch("/api/jobs", {
       method: "POST",
@@ -23,6 +25,13 @@ const App = () => {
     });
     return res.json();
   };
+
+  const deleteJob = async (id) => {
+    const res = await fetch(`/api/jobs/${id}`, {
+      method: "DELETE",
+    });
+    return res.json();
+  }
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -39,7 +48,7 @@ const App = () => {
         />
         <Route
           path="/jobs/:id"
-          element={<JobPage />}
+          element={<JobPage   deleteJob={deleteJob}/>}
           loader={jobLoader}
           errorElement={<h1>Greška - stranica nije pronađena</h1>}
         />
