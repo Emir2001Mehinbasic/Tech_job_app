@@ -6,7 +6,7 @@ import Mainlayout from './layouts/Mainlayout';
 import Homepage from './pages/Homepage'
 import Jobspage from './pages/Jobspage'
 import NotFoundPage from './pages/NotFoundPage';
-import JobPage from './pages/JobPage';
+import JobPage ,{jobLoader} from './pages/JobPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +25,7 @@ const router = createBrowserRouter(
     <Route
       path='/jobs/:id'
       element={<JobPage />}
+      loader={jobLoader}
       errorElement={<h1>Greška - stranica nije pronađena</h1>}
       
     />
