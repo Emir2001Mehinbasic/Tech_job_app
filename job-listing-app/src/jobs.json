@@ -83,6 +83,20 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
+    },
+    {
+      "id": "abd3",
+      "title": "job.title",
+      "type": "job.type",
+      "location": "job.location",
+      "description": "job.description",
+      "salary": "job.salary",
+      "company": {
+        "name": "job.company.name",
+        "description": "job.company.description",
+        "contactEmail": "job.company@contactEmail.com",
+        "contactPhone": "job.company.contactPhone"
+      }
     }
   ]
 }
